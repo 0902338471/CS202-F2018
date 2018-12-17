@@ -1,0 +1,191 @@
+cóntructor
+mutator
+observer
+iterator
+class Fraction{
+public:
+ Fraction()
+ bool isvalid(return b!=0;)
+ bool isinlowestterm()
+private:
+ int numeator;
+ int denominator;
+
+*constructor:
+ if no constructor is implemented,the compiler will issue a default constructor.But if you have declare a constructor.There 's no need to use the default the con structor
+default constructor: no argument
+this pointer
+copy constructor(must use parameter const and pass by reference)
+when we use copy constructor:pass value ,return value(we have a free one copy constructor)
+need the free one ? Fraction()=default
+build up function operator
+void Fraction::adding()<=>void Fraction::operator+=()
+when call a.adding(b)<=>a.operator+=(b)<=>a+=b
+operator in c++
+never return reference to a local(because later local will be release)
+c=a+b,c=a+5,c=5+a?
+converting int to fraction? 
+cout<<
+cin>> 
+cout<<a (operator<<(cout,a))
+friend ostream& operator<<(ostream& os, const Fraction &tmp);
+violate data hiding?
++want to have insertion?:do with get and set (open door for everyone with no key =>setter and getter are evil)
+another choice:friend function(special keyword):give the right for a specific function(set that function as friend)(keyword friend before function or class =>
+i trust you and i want to give you a key to my data)
+Friendship in c++ is one way(directional)
+friend void dosomething();(this class consider dosthing as a friend =>he got a key to my data)
+member and non-member function
+reading:inheritance
++protected:between private and public(can't b access in main but can access in function) if we don't have derived class =>protected is the same as private
+=>main:public inheritance
+about using keyword:
+when compiler find the appropriate function =>it will run it else it will crashed =>using B:test1 for finding function in B
+Object**a;
+pointer of base class
+Animal *a;
+a=&cat;
+a=&dog
+animal is not a real thing(just like concept
+virtual void talk()=0;(sorry you never have this it just a concept).
+wwhen a class has at least 1 pure virtual function (no real entity of that class just concept)
+=>class Animal=abstract class
+multiple inheritance:
++class C
+classA public C
+class B public C
+classs D public a,public b 
+D wil have two C
+to merge use virtual public
+class A:virtual pulic C
+class B:virtual public C
+class D:public A,public B (there is only one C by using virtual for merging)
+final class 
+TEMPLATE:
+static member
+static member NOS
+a.NOS=5(a change NOS b and c will also be updated by that value)
+b and c will be 5
+b.NOS=7
+a and c will be 7
+METAPROGRAMMING:
+Exception handling:
+try (any source code you think it has problem just put in try block)
+throw (any thing ,an object or integer ,...)
+catch block (will be put after try) 
+throw must throw something
+no throw=>no catch
+throw the exception to higher levesls:
++new operand throw to higher levels to handle it
++no operand throw; pass and throw the same argument to higher catch(must be in catch block)
+if current catch doesnt handle the argument pass to the next catch and move to next higher catch
+if 2nd and 3rd also matches it will do 2nd catch
+int foo(int x) throw(char,int);//in this function i just want to throw char or int
+int foo(int x) throw();//in this func i will not throw anything
+memory leaking?
+throw t;
+delete pArr[] ?
+solution:using vector instead because vector has destructor it will automatically destroy the allocated memory after leaving the scope of class =>this method is called RAII(Resources Acquisition Is Initialization)
+smart pointer in c++ not in c class in c++ not in c =>c++ is modern 
+never throw again in destructor (never throw too much)=>solution: write to logs file(note about this warning) 
+assignment opearator(what is the previous problem) reading exception handling
+What if you have deleted your house and the seller don't want to sell his house to you(homeless?)
+proposed method(safer): ask tmp pointer to hold the new house first then when you ensure that you could buy a new house then you could get that
+house and delete the old one
+if there are any chance to corrupt your program try to throw that exception and catch every exception.
+have problem in constructor just throw it (throw exceptions)
+how can we catch exceptions from initialization list?
+nested try block
+dynamic binding throw exception (polymorphism)?
+why using void pop() but not using int pop() or Object pop()(return an Object)
+RAII?
+developer take advange of throw and catch(with recursion when you have found the answer using a flag to check ? and unwinding step by step?)
+=>using throw to throw directly outside the recursive function
+Base(int)
+Testing...
+Base::doSth()
+Derived(int)
+
+Testing
+Derived::doSth()
+problem with virtual dosth() in base class and 
+dosth() in derived class Derived object haven't been constructed yet =>run the base dosth()
+Reporting about vTable && dynamic binding
+Books on STL:Effective STL
+Singleton Pattern:
++To prevent someone trying to create new Object
+put Constructors,Destructor,Copy Constructors,Assignment Operator in private 
+Question:static member how to delete it because it doesn't involve constructor
+*Const-correctness:
+const string &s:do with reference because it is better then copy ...
+const pointer to data type:
+const Type *p =Type const *p(pointer to const Type)( you could not change the value)
+Type * const p(this is really a const pointer to type,const pointer point to Type)(could not change the address of that pointer)
+const int& q1=t//Y
+int const & q2=t//Y
+int & const q3=t//N
+int const & const q4=t//N
+const int & const q5=t//N
+const member function:
+(1)MyClas(2)*(3)doSth((4)Myclass(5)&(6)x,(7)Myclass(8)*(9)y)(10);(11)
+never return by reference(if you want use the const at starting of function)
++const function overloading:
++if you really want to change a const member function
+class Myclass{
+public:
+ int n;
+ const int c;
+ mutable int m=7;
+}
+void dosth(const MyClass &src)
+{
+MyClass *tmp=const_cast<MyClass*>(&src);
+int *tmpC=const_cast<int*>(&(tmpC->c));
+src.c=50/N=>*tmpC=50;
+src.n=300/N=>tmp->n=100;
+src.m=2/Y
+///READ ABOUT CONST_CAST
+Smart Pointer:
++Dif from normal pointer(it has auto destructor and you don't have to delete it by yourself )
+Review CS202:
+Class and objects:class is blueprint objects is instances
++Encapsulation,Data hiding
++Operators
++Inheritance=>dynamic binding/polymorphism 
++Multiple Inheritance:
++Pattern
++Templates
++STL
++Exception Handling
++const 
+OOP concepts important:
++No global data
++let the obj do it for you!!!!
+3 things must go together:(Rules of three)
++copy constructor
++assignment operator
++destructor
+Recommended books:Design Pattern
+Assignment operator
+if(this ==&src)
+ return(*this)
+int * temp=new int [src.n]
+delete []a;
+a=temp;
+n=src.n;
+...
+return *This;
+better=>
+n=src.n
+swap(pArr,src.pArr)
+return *this
+=>new mechanism:copy and swap .
+redundant copy constructor
+a=b+c // ? 
+tmp for b+c 
+tmp1=tmp
+tmp1 for a=tmp1
+redundant
+Move constructor
+Move Assignment op
+=>Move Semantics 

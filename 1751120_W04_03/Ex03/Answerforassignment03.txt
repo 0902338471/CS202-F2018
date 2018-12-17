@@ -1,0 +1,21 @@
+int main()
+{
+  Base b1;//printout"Base constructor-0 param"
+  Base b2(3);//printout"Base constructor-1 param"
+  Base*pb=new Base(1);//printout"Base constructor-1 param"
+  DerivedA da1;//printout "Base constructor-0 param" and then print"DerivedA constructor-0 param" 
+  DerivedA da2(2);//printout"Base constructor-0 param" and then print "DerivedA constructor-1 param" 
+  DerivedA da3(2,3);//"Base constructor-0 param"and then print"DerivedA constructor-2 param" 
+  DerivedA da4(da2);//printout "Base constructor-0 param"
+  pb=new DerivedA(4,5);//printout "Base constructor-0 param" and then print "DerivedA constructor-2 param"
+  DerivedB db1;//printout "Base constructor-0 param" and then "DerivedB constructor-0 param"
+  DerivedB db2(2.7);//printout "Base constructor-0 param" and then "DerivedB constructor-1 param"
+  DerivedB db3(3,2.7);//printout "Base constructor-1 param" and then "DerivedB constructor-2 params"
+  DerivedB db4(db2);//printout "Base copy constructor" and then "DerivedB copy constructor"
+  pb=new DerivedB(4,5);////printout "Base constructor-1 param" and then "DerivedB constructor-2 params"
+  f(b1);//printout "Base copy constructor" and then print "Function f" and then "Base destructor"
+  f(da1);//printout "Base copy constructor"  and then print"Function f" and then "Base destructor"
+  f(db1);//printout "Base copy constructor" and then print"Function f" and then "Base destructor"
+  delete pb;//printout "Base destructor"
+  return 0;
+}

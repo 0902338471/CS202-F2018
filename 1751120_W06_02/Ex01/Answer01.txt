@@ -1,0 +1,16 @@
+a)Things will be printed on the console screen like this:
+B text
+A default
+Explanation:
+First step:When we initialize object B with overload constructor (with parameter char*) 
+B now have its private member which is inherited from A is "text"
+Second step:We initialize a new pointer type A point to a new object B (which is inherited from
+A) and initialized that object B with copy constructor .But in copy constructor of B ,we don't specify 
+which constructor of A should be generated so default constructor of A will be run.Therefore Object B that 
+A points to now has private member "default"
+Third step:We call foo and pass the address of the first Object and pass the pointer to the second Object).
+In scoop foo function now,obj1 now is pointer to object B so when we call the display funtion.Object B will call
+its display function.In B's display function ,we call prepare func,prepare func now is belongs to B so B text will
+be printed out on the screen
+Obj2 now is totally changed its shape into A object ,not B anymore .So when we call obj2.display() it will call the display 
+of A object and A default will be printed on the screen

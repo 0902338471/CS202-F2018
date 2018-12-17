@@ -1,0 +1,46 @@
+Answer for assignment 2b)
+There are 2 main bug that prevent the program from compiling successfully:
++First:The derived class has no override function for virtual abstract function in base class 
++Second:Because a user-defined constructor has been declared in derived class so there is will be no longer default constructor. To have a default 
+constructor again we have to declare it again 
+Output on screen after fixing code in assignment2:
+Shape: Rectangle
+Shape: Rectangle
+Shape: Rectangle
+The same 3 lines ?
+2c)
+Because the three fc fc->clone fc->clone is the same so we don't need to use an array of 3 pointers point to IFace it causes memory leaking .Instead we can't 
+just only use one variable to hold the fc and call the show method.After refactoring, code in testFace() will look like this :
+void testFace(IFace* fc) {
+	IFace* a = { fc};
+	a->show();
+	cout << "The same 3 lines ? ";
+}
+Adding function in EyedFace:
+public :static int counts;
+EyedFace(string shapes, int eyestmp)
+	{
+		shape = shapes;
+		eyes = eyestmp;
+		counts++;
+	}
+EyedFace()
+	{
+		counts++;
+	}
+	~EyedFace()
+	{
+		counts--;
+	}
+int EyedFace::counts = 0;
+int main() {
+	EyedFace tui;
+	cout << EyedFace::counts << endl;
+	EyedFace tui1;
+	EyedFace tui2;
+	cout<< EyedFace::counts ;
+	tui1.~EyedFace();
+	cout << EyedFace::counts;
+	system("pause");
+	return 0;
+}
